@@ -98,8 +98,6 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         test.setText(secretWord);
         TextView blanks = findViewById(R.id.blanks);
         blankGen(blanks, secretWord);
-        TextView testAnswer = findViewById(R.id.testAnswer);
-        testAnswer.setText("");
         entryList = new Stack<>();
         for(Button b: buttonList){
             b.setEnabled(true);
@@ -131,8 +129,12 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
             }
             goodGuesses.trimToSize();
             if((goodGuesses).size() == arrBlanks.size()){
+                score+=100;
+                TextView scoreField = findViewById(R.id.score);
+                scoreField.setText("" + score);
                 TextView test = findViewById(R.id.testCorrect);
-                test.setText("win");
+                test.setText("Win!");
+                addDelay();
             }
             TextView correctBlanks = findViewById(R.id.blanks);
             correctBlanks.setText(listToString(arrBlanks));
@@ -144,10 +146,9 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                // Do something after 5s = 5000ms
-
+                reset();
             }
-        }, 5000);
+        }, 800);
     }
 
     protected String readRandomWord()  {
@@ -193,6 +194,11 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
     public void disable(View view){
         Button b = (Button)view;
         b.setEnabled(false);
+    }
+
+    public void renable(View view){
+        Button b = (Button) view;
+        b.setEnabled(true);
     }
 
     // array toString
