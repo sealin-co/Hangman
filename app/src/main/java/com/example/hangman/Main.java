@@ -37,10 +37,8 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
     public int guesses = 5;
     public ArrayList<Button> buttonList = new ArrayList<>();
     boolean win = false;
-    public String blanksArr[];
     public ArrayList<String> arrBlanks = new ArrayList<>();
     public ArrayList<String> goodGuesses = new ArrayList<>();
-    public String blanks = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
